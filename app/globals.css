@@ -31,3 +31,8 @@ body {
     text-wrap: balance;
   }
 }
+
+td {
+
+  @apply text-center border-2 border-gray-400
+}
