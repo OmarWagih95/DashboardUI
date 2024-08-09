@@ -7,9 +7,7 @@ import { toast, ToastContainer } from 'react-toast'
 const EmployeesPage = () => {
   const [categoryID,setcategoryID]=useState('')
   async function deleteEmployee(employeeID){
-    // const data = {categoryID:categoryIDD}
-    // const config={data:data}
-    // await axios.post('/api/categories/',data)
+
 
     const response= await axios.delete('/api/employees/',{params:{employeeID:employeeID}})
     console.log(response)
@@ -27,7 +25,7 @@ const EmployeesPage = () => {
   // }
     const [employees,setEmployees] =useState([]);
     const fetchEmployees = async () => {
-      const res =await axios('/api/employees')
+      const res =await axios.get('/api/employees')
       // const res =await axios('/api/categories2')
       // if(res.data.json().ok){
   
@@ -44,7 +42,7 @@ const EmployeesPage = () => {
   return (
     <div className='flex h-screen px-7 py-3 bg-white flex-col gap-5 justify-start items-start'>
        <ToastContainer position='bottom-center' delay ={1000}/>
-      <Link className='hover:bg-purple-700 rounded-md px-4 bg-purple-800 cursor-pointer py-3' href='/categories/pages/new'> add new employee</Link>
+      <Link className='hover:bg-purple-700 rounded-md px-4 bg-purple-800 cursor-pointer py-3' href='/pages/employees/new'> add new employee</Link>
       <table className='px-52 mt-2 w-full text-gray-800 '>
         
         <thead>
@@ -60,7 +58,7 @@ const EmployeesPage = () => {
           <td>{employee.employeeName}</td>
           <td className='text-center items-center'>
             {/* <Link href={`/categories/pages/edit/${category._id}`} className='flex justify-center text-center items-center'> */}
-            <Link href={`/categories/pages/edit`} className='flex justify-center text-center items-center'>
+            <Link href={`/pages/employees/edit/${employee._id}`} className='flex justify-center text-center items-center'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6 text-purple-700 hover:text-purple-800">
   <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
   <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
